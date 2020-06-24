@@ -12,7 +12,9 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
     Context mContext;
 
     public static class NewsfeedViewHolder extends RecyclerView.ViewHolder {
+
         public DiaryListView diaryView;
+
         public NewsfeedViewHolder(View v) {
             super(v);
             diaryView = (DiaryListView) v;
@@ -21,6 +23,7 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
         public DiaryListView getDiaryView(){
             return diaryView;
         }
+
     }
 
     public NewsfeedAdapter() {
@@ -29,15 +32,17 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
 
     @Override
     public NewsfeedAdapter.NewsfeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         mContext = parent.getContext();
 
+        // Init CustomView
         DiaryListView v = (DiaryListView) new DiaryListView(parent.getContext());
-
         v.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
 
+        // Set Holder
         NewsfeedViewHolder vh = new NewsfeedViewHolder(v);
         return vh;
     }
@@ -45,7 +50,6 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
     @Override
     public void onBindViewHolder(NewsfeedViewHolder holder, int position) {
 
-        Log.v("Test" , position + "");
         String content = DataManager.getInstance(mContext).newsfeedDiaries.get(position).content;
         ((TextView)(holder.diaryView.findViewById(R.id.diary_content))).setText(content);
     }
