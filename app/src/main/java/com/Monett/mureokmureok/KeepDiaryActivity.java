@@ -84,8 +84,10 @@ public class KeepDiaryActivity extends AppCompatActivity {
 
             Bitmap image =  ((BitmapDrawable) diaryImage.getDrawable()).getBitmap();
 
-            Diary diary = new Diary(creationDate, content);
+            Diary diary = new Diary(creationDate, DataManager.getInstance(getApplicationContext()).getCurrentUser(), content);
             diary.setImage(image);
+
+            DataManager.getInstance(getApplicationContext()).getCurrentUser().getDiaries().add(diary);
             DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().add(0,diary);
 
             finish();

@@ -14,4 +14,16 @@ public class User {
         this.plants = new ArrayList<Plant>();
         this.diaries = new ArrayList<Diary>();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Plant> getPlants() {
+        return plants;
+    }
+
+    public ArrayList<Diary> getDiaries() {
+        return diaries;
+    }
 }

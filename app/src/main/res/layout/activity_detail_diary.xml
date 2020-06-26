@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailDiaryActivity"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/detail_diary_creationdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="creationdate"
+        android:textSize="13pt"
+        android:layout_weight="0"
+        />
+
+    <ImageView
+        android:id="@+id/detail_diary_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/splash_plant"
+        android:layout_weight="0.5"/>
+
+    <TextView
+        android:id="@+id/detatil_diary_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="0.5"
+        android:text="content"
+        android:textSize="15pt"
+        />
+
+</LinearLayout>

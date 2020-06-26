@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
+
+import com.Monett.mureokmureok.Data.DataManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         newsfeedAdapter = new NewsfeedAdapter();
         recyclerView.setAdapter(newsfeedAdapter);
+
+        // If Login
+        Toast.makeText(this, DataManager.getInstance(getApplicationContext()).getCurrentUser().getName() + "님이 로그인 하셨습니다.",
+                Toast.LENGTH_SHORT).show();
 
         // Init FloatingActionButton
         FloatingActionButton fab = findViewById(R.id.keep_diary_button);

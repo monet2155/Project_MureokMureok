@@ -6,13 +6,19 @@ import java.util.ArrayList;
 
 public class Diary {
     String creationDate;
+    User author;
     String content;
 
     Bitmap image;
 
-    public Diary(String creationDate, String content) {
+    public Diary(String creationDate, User author, String content) {
         this.creationDate = creationDate;
+        this.author = author;
         this.content = content;
+    }
+
+    public User getAuthor() {
+        return author;
     }
 
     public String getCreationDate() {

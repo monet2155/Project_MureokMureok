@@ -1,6 +1,7 @@
 package com.Monett.mureokmureok;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.Monett.mureokmureok.Data.DataManager;
+import com.Monett.mureokmureok.Data.Diary;
 
 public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.NewsfeedViewHolder> {
 
@@ -22,12 +24,18 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
         public NewsfeedViewHolder(View v) {
             super(v);
             diaryView = (DiaryListView) v;
-        }
+            diaryView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
 
-        public DiaryListView getDiaryView(){
-            return diaryView;
-        }
+                    Intent intent = new Intent(v.getContext(), DetailDiaryActivity.class);
+                    intent.putExtra("diary_position", position);
 
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
     }
 
     public NewsfeedAdapter() {
@@ -51,14 +59,21 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
         return vh;
     }
 
+
+
     @Override
     public void onBindViewHolder(NewsfeedViewHolder holder, int position) {
 
-        String content = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position).getContent();
-        ((TextView)(holder.diaryView.findViewById(R.id.diary_content))).setText(content);
+        Diary currentDiary = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position);
 
-        Bitmap image = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position).getImage();
-        ((ImageView)(holder.diaryView.findViewById(R.id.diary_image))).setImageBitmap(image);
+        String author = currentDiary.getAuthor().getName();
+        ((TextView)(holder.diaryView).findViewById(R.id.diary_list_username)).setText(author);
+
+        String content = currentDiary.getContent();
+        ((TextView)(holder.diaryView.findViewById(R.id.diary_list_content))).setText(content);
+
+        Bitmap image = currentDiary.getImage();
+        ((ImageView)(holder.diaryView.findViewById(R.id.diary_list_image))).setImageBitmap(image);
 
     }
 

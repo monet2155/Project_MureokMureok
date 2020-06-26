@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.Monett.mureokmureok.Data.DataManager;
 import com.Monett.mureokmureok.Data.Diary;
+import com.Monett.mureokmureok.Data.User;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,10 +21,19 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new SplashHandler(), 3000);
 
-        for (int i = 0; i < 10; i++) {
-            Diary diary = new Diary("20200626", i+"번째");
-            diary.setImage(((BitmapDrawable)getResources().getDrawable(R.drawable.splash_plant)).getBitmap());
-            DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().add(diary);
+        // If Login
+        User currentUser = new User("JunHyeok");
+        DataManager.getInstance(getApplicationContext(), currentUser);
+
+        for (int i = 0; i < 3; i++) {
+            User user = new User("user" + i);
+            for (int j = 0; j < 2; j++) {
+                Diary diary = new Diary("20200626", user, "content" + j);
+                diary.setImage(((BitmapDrawable)getResources().getDrawable(R.drawable.splash_plant)).getBitmap());
+
+                user.getDiaries().add(diary);
+            }
+            DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().addAll(user.getDiaries());
         }
 
         Log.v("diary size", DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().size() + "" );
