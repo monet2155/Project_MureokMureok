@@ -51,12 +51,12 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
     @Override
     public void onBindViewHolder(NewsfeedViewHolder holder, int position) {
 
-        String content = DataManager.getInstance(mContext).newsfeedDiaries.get(position).content;
+        String content = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position).getContent();
         ((TextView)(holder.diaryView.findViewById(R.id.diary_content))).setText(content);
     }
 
     @Override
     public int getItemCount() {
-        return DataManager.getInstance(mContext).newsfeedDiaries.size();
+        return DataManager.getInstance(mContext).getNewsfeedDiaries().size();
     }
 }

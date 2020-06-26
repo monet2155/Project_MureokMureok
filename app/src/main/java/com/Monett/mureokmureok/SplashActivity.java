@@ -20,12 +20,11 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new SplashHandler(), 3000);
 
         for (int i = 0; i < 20; i++) {
-            Diary diary = new Diary();
-            diary.content = i + "번째";
-            DataManager.getInstance(getApplicationContext()).newsfeedDiaries.add(diary);
+            Diary diary = new Diary("20200626", i+"번째");
+            DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().add(diary);
         }
 
-        Log.v("diary size", DataManager.getInstance(getApplicationContext()).newsfeedDiaries.size() + "" );
+        Log.v("diary size", DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().size() + "" );
     }
 
     @Override
