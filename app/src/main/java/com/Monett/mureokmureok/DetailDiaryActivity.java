@@ -12,6 +12,7 @@ public class DetailDiaryActivity extends AppCompatActivity {
 
     private TextView creationDateView;
     private TextView contentView;
+    private TextView authorView;
     private ImageView imageView;
 
     @Override
@@ -20,7 +21,8 @@ public class DetailDiaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_diary);
 
         creationDateView = (TextView) findViewById(R.id.detail_diary_creationdate);
-        contentView = (TextView) findViewById(R.id.detatil_diary_content);
+        contentView = (TextView) findViewById(R.id.detail_diary_content);
+        authorView = (TextView) findViewById(R.id.detail_diary_author);
         imageView = (ImageView) findViewById(R.id.detail_diary_image);
 
         int position = getIntent().getIntExtra("diary_position", 0);
@@ -28,6 +30,7 @@ public class DetailDiaryActivity extends AppCompatActivity {
 
         creationDateView.setText(currentDiary.getCreationDate());
         contentView.setText(currentDiary.getContent());
+        authorView.setText(currentDiary.getAuthor().getName());
         imageView.setImageBitmap(currentDiary.getImage());
     }
 }

@@ -28,10 +28,20 @@
         android:layout_weight="0.5"/>
 
     <TextView
-        android:id="@+id/detatil_diary_content"
+        android:id="@+id/detail_diary_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="0"
+        android:text="author"
+        android:textSize="12pt"
+        />
+
+    <TextView
+        android:id="@+id/detail_diary_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_weight="0.5"
         android:text="content"
         android:textSize="15pt"
