@@ -2,10 +2,11 @@ package com.Monett.mureokmureok;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.Monett.mureokmureok.Data.DataManager;
 
 public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.NewsfeedViewHolder> {
 

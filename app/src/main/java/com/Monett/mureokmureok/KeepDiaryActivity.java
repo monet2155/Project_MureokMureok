@@ -1,6 +1,5 @@
 package com.Monett.mureokmureok;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -10,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import com.Monett.mureokmureok.Data.DataManager;
+import com.Monett.mureokmureok.Data.Diary;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,19 +38,19 @@ public class KeepDiaryActivity extends AppCompatActivity {
     class SaveButtonListner implements View.OnClickListener{
         @Override
         public void onClick(View v) {
-            Diary diary = new Diary();
 
-            diary.content = diaryContent.getText().toString();
+            String content = diaryContent.getText().toString();
 
             Date today = Calendar.getInstance().getTime();
             SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
 
-            diary.creationDate = format.format(today);
+            String creationDate = format.format(today);
 
-            Drawable image = diaryImage.getDrawable();
-            diary.image = ((BitmapDrawable) image).getBitmap();
+            Bitmap image =  ((BitmapDrawable) diaryImage.getDrawable()).getBitmap();
 
-            DataManager.getInstance(getApplicationContext()).newsfeedDiaries.add(0,diary);
+            Diary diary = new Diary(creationDate, content);
+            diary.setImage(image);
+            DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().add(0,diary);
 
             finish();
         }

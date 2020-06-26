@@ -1,4 +1,4 @@
-package com.Monett.mureokmureok;
+package com.Monett.mureokmureok.Data;
 
 import android.content.Context;
 
@@ -23,5 +23,13 @@ public class DataManager {
             instance = new DataManager();
         }
         return instance;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public ArrayList<Diary> getNewsfeedDiaries() {
+        return newsfeedDiaries;
     }
 }
