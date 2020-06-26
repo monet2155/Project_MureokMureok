@@ -1,6 +1,7 @@
 package com.Monett.mureokmureok;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,8 +20,9 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new SplashHandler(), 3000);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             Diary diary = new Diary("20200626", i+"번째");
+            diary.setImage(((BitmapDrawable)getResources().getDrawable(R.drawable.splash_plant)).getBitmap());
             DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().add(diary);
         }
 

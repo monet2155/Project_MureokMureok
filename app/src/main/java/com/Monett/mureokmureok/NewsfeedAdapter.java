@@ -1,9 +1,12 @@
 package com.Monett.mureokmureok;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.Monett.mureokmureok.Data.DataManager;
@@ -53,6 +56,10 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
 
         String content = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position).getContent();
         ((TextView)(holder.diaryView.findViewById(R.id.diary_content))).setText(content);
+
+        Bitmap image = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position).getImage();
+        ((ImageView)(holder.diaryView.findViewById(R.id.diary_image))).setImageBitmap(image);
+
     }
 
     @Override
