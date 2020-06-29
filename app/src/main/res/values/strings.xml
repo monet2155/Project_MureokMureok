@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MureokMureok</string>
+
+    <string name="drawer_open">open</string>
+    <string name="drawer_closed">closed</string>
+
 </resources>

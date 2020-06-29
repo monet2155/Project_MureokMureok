@@ -25,6 +25,10 @@ public class SplashActivity extends AppCompatActivity {
         User currentUser = new User("JunHyeok");
         DataManager.getInstance(getApplicationContext(), currentUser);
 
+        getDataOnServer();
+    }
+
+    private void getDataOnServer(){
         for (int i = 0; i < 3; i++) {
             User user = new User("user" + i);
             for (int j = 0; j < 2; j++) {
@@ -35,13 +39,11 @@ public class SplashActivity extends AppCompatActivity {
             }
             DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().addAll(user.getDiaries());
         }
-
-        Log.v("diary size", DataManager.getInstance(getApplicationContext()).getNewsfeedDiaries().size() + "" );
     }
 
     @Override
     public void onBackPressed() {
-
+        // Don't go back
     }
 
     private class SplashHandler implements Runnable{
