@@ -39,7 +39,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@mipmap/round_add_black_18dp"
             app:fabSize="normal" />
     </RelativeLayout>
 

@@ -13,9 +13,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Monett.mureokmureok.Data.DataManager;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        actionBar.setHomeAsUpIndicator(R.mipmap.round_menu_black_18dp);
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -69,14 +71,19 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.detail_profile:
-                        Toast.makeText(MainActivity.this, "Test", Toast.LENGTH_SHORT).show();
-                        // TODO: Make My Profile & My Diaries Activities
+                        // My Profile & My Diaries Activities
+                        Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                        startActivity(intent);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
+
+        // Set Navigation Header User Profile
+        TextView textView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_name);
+        textView.setText(DataManager.getInstance(getApplicationContext()).getCurrentUser().getName());
     }
 
 
@@ -115,20 +122,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
 //            case R.id
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
 
         newsfeedAdapter.notifyDataSetChanged();
-
         recyclerView.smoothScrollToPosition(0);
     }
 }

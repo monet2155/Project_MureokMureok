@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.Monett.mureokmureok.Data.DataManager;
 import com.Monett.mureokmureok.Data.Diary;
+import com.Monett.mureokmureok.Data.Plant;
 import com.Monett.mureokmureok.Data.User;
 
 public class SplashActivity extends AppCompatActivity {
@@ -23,6 +24,11 @@ public class SplashActivity extends AppCompatActivity {
 
         // If Login
         User currentUser = new User("JunHyeok");
+        for (int i = 0; i < 2; i++) {
+            Plant plant = new Plant("plant" + i, "3일에 1번", "20200620");
+            plant.setPlantPicture(((BitmapDrawable)getResources().getDrawable(R.drawable.splash_plant)).getBitmap());
+            currentUser.getPlants().add(plant);
+        }
         DataManager.getInstance(getApplicationContext(), currentUser);
 
         getDataOnServer();

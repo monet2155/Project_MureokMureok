@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/splash_plant"
+        android:src="@mipmap/round_add_black_18dp"
         android:layout_weight="0.5"/>
 
     <EditText
