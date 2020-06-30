@@ -42,8 +42,12 @@ public class KeepDiaryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().show();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.show();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle(R.string.keepdiary_title);
 
         initViews();
 
