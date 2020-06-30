@@ -36,5 +36,7 @@ public class DiaryListView extends LinearLayout {
     private void initView(){
         inflate(getContext(), R.layout.diary_list_view, this);
         nameView = (TextView) findViewById(R.id.diary_list_username);
+        contentView = (TextView) findViewById(R.id.diary_list_content);
+        imageView = (ImageView) findViewById(R.id.diary_list_image);
     }
 }

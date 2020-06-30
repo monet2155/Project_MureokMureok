@@ -67,13 +67,13 @@ public class NewsfeedAdapter extends RecyclerView.Adapter<NewsfeedAdapter.Newsfe
         Diary currentDiary = DataManager.getInstance(mContext).getNewsfeedDiaries().get(position);
 
         String author = currentDiary.getAuthor().getName();
-        ((TextView)(holder.diaryView).findViewById(R.id.diary_list_username)).setText(author);
+        holder.diaryView.nameView.setText(author);
 
         String content = currentDiary.getContent();
-        ((TextView)(holder.diaryView.findViewById(R.id.diary_list_content))).setText(content);
+        holder.diaryView.contentView.setText(content);
 
         Bitmap image = currentDiary.getImage();
-        ((ImageView)(holder.diaryView.findViewById(R.id.diary_list_image))).setImageBitmap(image);
+        holder.diaryView.imageView.setImageBitmap(image);
 
     }
 
